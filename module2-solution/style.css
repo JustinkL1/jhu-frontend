@@ -7,7 +7,7 @@
 body {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 15px;
-     background-color: #fbf9cb; 
+    background-color: #fbf9cb; 
 }
 
 #jhulogo{
@@ -80,8 +80,10 @@ section:nth-child(3){
 
 p{
     width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 7%;
+    margin-right: 7%;
+    padding-left: 5%;
+    padding-right: 5%;
     position:relative;
 }
 
@@ -106,12 +108,10 @@ footer{
         width: 16.66%;
       }
       .col-lg-3 {
-        width: 29%;
-        /* width: 25%; */
-        /* changed for header */
+        width: 25%;
       }
       .col-lg-4 {
-        width: 32%;
+        width: 33.33%;
       }
       .col-lg-5 {
         width: 41.66%;
@@ -142,11 +142,11 @@ footer{
         height:80px;
     }
     section:nth-child(1){
-        margin-left: 1%;
+        margin-left: 6.25%;
     }
     section:nth-child(2){
-        margin-right: 1%;
-        margin-left: 1%;
+        margin-right: 6.25%;
+        margin-left: 6.25%;
     }
 
     p{
@@ -176,9 +176,7 @@ footer{
         width: 41.66%;
       }
       .col-md-6 {
-        width: 48%;
-        /* width: 50% */
-        /* changed for spacing */
+        width: 50%
       }
       .col-md-7 {
         width: 58.33%;
@@ -196,23 +194,23 @@ footer{
         width: 91.66%;
       }
       .col-md-12 {
-        width: 98%;
+        width: 100%;
       }
       section{
         height:85px
       }
 
       section:nth-child(1){
-        margin-left: 1%;
+        margin-left: 4.17%;
       }
 
       section:nth-child(2){
-        margin-left: 2%;
+        margin-left: 8.34%;
       }
 
       section:nth-child(3){
         height:70px;
-        margin-left: 1%;
+        margin-left: 4.17%;
       }
 
       p#chickencontent, p#beefcontent {
@@ -264,7 +262,7 @@ footer{
         width: 91.66%;
       }
       .col-sm-12 {
-        width: 98%;
+         width: 100%; 
       } 
 
     h1{
@@ -277,8 +275,8 @@ footer{
         font-size: 150%;
         text-align: left;
         margin-top: 2%;
-        margin-bottom: 4%;
-        margin-left: 1%;
+        margin-bottom: 2%;
+        margin-left: 4.17%;
     } 
 
     h4{
@@ -287,7 +285,7 @@ footer{
 
     section{
         height:100px;
-        margin-left: 1%;
+        margin-left: 4.17%;
     }
 
     #description{
