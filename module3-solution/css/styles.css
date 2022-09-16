@@ -1,0 +1,102 @@
+body {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+    background-color: #fbf9cb; 
+}
+
+#header-nav {
+  background-color: #002d71;
+  border-radius: 0;
+  border: 0;
+}
+
+.navbar-brand h1{ /* Restaurant name */
+  font-family: 'Lora', serif;
+  color: #e6fada;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px rgb(224, 210, 210);
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: .75;
+}
+
+#collapsable-nav{
+  background-color: #d5d4e6;
+}
+
+#menu-title{
+    color: black;
+    font-size: 175%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+
+#chickensection, #beefsection, #sushisection{
+    border: 1px solid black;
+    margin-bottom: 2%;
+    height: 700px;
+    overflow:hidden;
+    position:relative;
+}
+
+#chickensection:hover, #beefsection:hover, #sushisection:hover{
+    overflow-y: scroll;
+    cursor: ns-resize;
+}
+
+h3 {
+  padding:3px; 
+  /* border: 1px solid black; */
+  font-size: 125%;
+  /* position: absolute; */
+  top:0;
+  right:0;
+}
+
+
+/* #chickenheader {
+  background-color: #83cff1; 
+} */
+#chickensection{
+  background-color: #83cff1; 
+}
+/* #beefheader {
+  background-color: #f9a778;
+} */
+#beefsection{
+  background-color: #f9a778;
+}
+/* #sushiheader {
+  background-color:#ce9dd9;
+} */
+#sushisection{
+  background-color: #ce9dd9;
+}
+
+p{
+    width: 90%;
+    margin-left: 7%;
+    margin-right: 7%;
+    padding-left: 5%;
+    padding-right: 5%;
+    /* position:relative; */
+}
+
+/* .row {
+    width: 100%;
+} */
+
+#backtotop{
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+}
+
+footer{
+    text-align: center;
+    margin-top: 100%;
+}
