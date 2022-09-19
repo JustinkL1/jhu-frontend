@@ -5,32 +5,36 @@ body {
 }
 
 #header-nav {
-  background-color: #002d71;
+  background-color: #035bdf;
   border-radius: 0;
   border: 0;
 }
 
 .navbar-brand h1{ /* Restaurant name */
-  font-family: 'Lora', serif;
-  color: #e6fada;
+  color: black;
   font-size: 1.5em;
-  text-transform: uppercase;
   font-weight: bold;
-  text-shadow: 1px 1px 1px rgb(224, 210, 210);
   margin-top: 0;
   margin-bottom: 0;
-  line-height: .75;
 }
 
 #collapsable-nav{
-  background-color: #d5d4e6;
+  background-color: #0a9bf5;
+}
+
+#collapsable-nav li{
+  border: 2px solid black;
+}
+#collapsable-nav li:hover{
+  background-color: #84cbf7;
 }
 
 #menu-title{
     color: black;
     font-size: 175%;
-    margin-top: 3%;
+    margin-top: 2%;
     margin-bottom: 3%;
+    font-weight: bold;
 }
 
 
@@ -49,29 +53,20 @@ body {
 
 h3 {
   padding:3px; 
-  /* border: 1px solid black; */
   font-size: 125%;
-  /* position: absolute; */
   top:0;
   right:0;
+  font-weight: bold;
 }
 
-
-/* #chickenheader {
-  background-color: #83cff1; 
-} */
 #chickensection{
   background-color: #83cff1; 
 }
-/* #beefheader {
-  background-color: #f9a778;
-} */
+
 #beefsection{
   background-color: #f9a778;
 }
-/* #sushiheader {
-  background-color:#ce9dd9;
-} */
+
 #sushisection{
   background-color: #ce9dd9;
 }
@@ -82,12 +77,8 @@ p{
     margin-right: 7%;
     padding-left: 5%;
     padding-right: 5%;
-    /* position:relative; */
 }
 
-/* .row {
-    width: 100%;
-} */
 
 #backtotop{
   position: absolute;
