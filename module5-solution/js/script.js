@@ -323,9 +323,20 @@ $(function () {
   // Module 5 Requirement 2-3
   // -------------------------------------------------
   var aboutRatingHtml = "snippets/about.html";
+  var stillInAboutPage = -1;                    // Check if the user is still in about page
+  var starRating = 0;                           // Star rating of the restaurant
+
+  // Only switch stillInAboutPage variable until home button is active
+  var checkHomeIsActive = function () {
+    var classes = document.querySelector("#navHomeButton").className;
+    if (classes.indexOf("active") !== -1) {
+      stillInAboutPage = -1;
+    }
+  }
 
   // Remove the class 'active' from home and switch to About button
   var switchAboutToActive = function () {
+    stillInAboutPage = 1;
     // Remove 'active' from home button
     var classes = document.querySelector("#navHomeButton").className;
     classes = classes.replace(new RegExp("active", "g"), "");
@@ -355,24 +366,30 @@ $(function () {
     $ajaxUtils.sendGetRequest(
       aboutRatingHtml,
       function (aboutRatingHtml) {
-        // Switch CSS class active to about button
-        switchAboutToActive();
-
         var html = aboutRatingHtml;
-        var starRating = randomStarRating();
-        var filledStar = '"fa fa-star"';
-        var emptyStar = '"fa fa-star-o"';
+
+        //Check if the user came from the home view first
+        checkHomeIsActive();
+        // Switch CSS class active to about button
+          switchAboutToActive();
+        if(stillInAboutPage === -1 || starRating === 0){
+          starRating = randomStarRating();
+          console.log("New star has been generated: " + starRating);
+        } 
+
+        var filledStar = 'fa fa-star';
+        var emptyStar = 'fa fa-star-o';
 
         // Loop over star spans
         for (var i = 1; i <= 5; i++) {
           // Insert star value
-          var starClass = "star" + i;
+          var starClass = "class" + i;
           if (i <= starRating) {
             html = insertProperty(html, starClass, filledStar);
           } else {
             html = insertProperty(html, starClass, emptyStar);
           }
-        }
+        }  
 
         var ratingViewHtml = insertProperty(html, "starRating", starRating);
         insertHtml("#main-content", ratingViewHtml);
