@@ -1,0 +1,17 @@
+<ol> 
+  <li ng-repeat="item in narrowItDown.narrowItDown.found">
+    <section class="itemName">
+        Name: {{ item.name }}
+    </section>
+    <section class="itemShortName">
+        Short Name: {{ item.short_name }} 
+    </section>
+    <section class="itemDescription">
+        Description: {{item.description}}
+    </section>
+     
+    <button class="removeButton" ng-click="narrowItDown.onRemove({index: $index});">Don't want this one!</button> 
+    <!-- add narrowItDown. with the controller else remove -->
+  </li>
+</ol>
+<div class="errorMessage" ng-if="narrowItDown.isSearchTermCorrect()">Nothing found</div>
