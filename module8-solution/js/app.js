@@ -13,22 +13,23 @@
       templateUrl: "menuList.html",
       scope: {
         narrowItDown: "<",
+        found: "<",
         onRemove: "&",
       },
       controller: FoundItemsDirectiveController,
-      controllerAs: "narrowItDown",
+      controllerAs: "list",
       bindToController: true,
     };
     return ddo;
   }
 
   function FoundItemsDirectiveController() {
-    var narrowItDown = this;
-    narrowItDown.isSearchTermCorrect = function () {
-        if(narrowItDown.narrowItDown.errorMessage){
-            narrowItDown.narrowItDown.found = [];
+    var list = this;
+    list.isSearchTermCorrect = function () {
+        if(list.narrowItDown.errorMessage){
+            list.found = [];
         }
-        return narrowItDown.narrowItDown.errorMessage;
+        return list.narrowItDown.errorMessage;
     };
   }
 
@@ -40,7 +41,7 @@
     narrowItDown.errorMessage = false;
     narrowItDown.getFoundItems = function () {
         if(narrowItDown.searchTerm.length !== 0){
-            var promise = MenuSearchService.getMatchedMenuItems( narrowItDown.searchTerm);
+            var promise = MenuSearchService.getMatchedMenuItems(narrowItDown.searchTerm);
         
             promise.then(function (response) {
                 narrowItDown.found = response;
@@ -50,23 +51,21 @@
                     narrowItDown.errorMessage = false;
                 }
             })
-            .catch(function (error) {
-            console.log("something wrong");
-            });
         } else {
             narrowItDown.errorMessage = true;
         }
+        
     };
 
     narrowItDown.removeItem = function (itemIndex) {
       MenuSearchService.removeItem(itemIndex);
-      console.log(narrowItDown.found.length);
       if(narrowItDown.found.length === 0) {
         narrowItDown.errorMessage = true;
       } else {
         narrowItDown.errorMessage = false;
       }
     };
+
   }
 
   MenuSearchService.$inject = ["$http", "ApiBasePath"];
