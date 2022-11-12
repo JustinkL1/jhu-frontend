@@ -1,0 +1,26 @@
+<h3>Home > Categories > Items ({{items.shortName}})</h3>
+<div class="tabs">
+  <button>
+    <a ui-sref="home" ui-sref-active="activeTab">home</a>
+  </button>
+  &larr;
+  <span>Press to go back to the home page</span>
+  <button>
+    <a ui-sref="categories" ui-sref-active="activeTab">categories</a>
+  </button>
+  &larr;
+  <span>Press to go back to the categories page</span>
+</div>
+<ol> 
+    <li ng-repeat="item in items.itemList">
+      <section class="categoryid">
+        ID: {{item.id}}
+      </section>
+      <section class="categoryName">
+        Name: {{ item.name }}
+      </section>
+      <section class="categoryShortName">
+        Short Name: {{ item.short_name }} 
+      </section>
+    </li>
+</ol>
