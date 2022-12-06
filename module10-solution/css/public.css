@@ -120,15 +120,15 @@ h3.menu-item-title {
   color:white;
 }
 
-input, select, textarea {
+input, select, textarea, button {
   color:#000;
 }
 
-.ng-touched.ng-valid {
+.ng-touched.ng-valid, .ng-touched.enabled{
   border: 2px green solid;
 }
 
-.ng-touched.ng-invalid {
+.ng-touched.ng-invalid, .ng-touched.disabled {
   border: 2px red solid;
 }
 

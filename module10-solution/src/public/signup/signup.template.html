@@ -1,84 +1,88 @@
-<h1>Sign up page</h1>
+<div class="container">
+  <fieldset>
+    <legend id="signuplegend">Registration</legend>
+    <form name='signupForm' novalidate>
+  
+      <input type="text" name="firstName" placeholder="Enter a first name"
+        ng-model="signup.user.firstName"
+        required
+        minlength="1"
+        ng-maxlength="20"
+        id="inputFirstName">
+        {{ signup.user.firstName }}
+        <span
+          ng-if="(signupForm.firstName.$error.minlength || signupForm.firstName.$error.required) && signupForm.firstName.$touched">
+          First name must be at least 1 character long
+        </span>
+        <span ng-if="signupForm.firstName.$error.maxlength && signupForm.firstName.$touched">
+          First name must not be longer than 20 characters
+        </span>
+        <br>
+  
+      <input type="text" name="lastName" placeholder="Enter a last name"
+        ng-model="signup.user.lastName"
+        required
+        minlength="1"
+        ng-maxlength="20"
+        >
+        {{ signup.user.lastName }}
+        <span
+          ng-if="(signupForm.lastName.$error.minlength || signupForm.lastName.$error.required) && signupForm.lastName.$touched">
+          Last name must be at least 1 character long
+        </span>
+        <span ng-if="signupForm.lastName.$error.maxlength && signupForm.lastName.$touched">
+          Last name must not be longer than 20 characters
+        </span>
+        <br>
+  
+      <input type="email" name="email" placeholder="Email"
+        ng-model="signup.user.email"
+        required>
+        <span ng-if="signupForm.email.$invalid && signupForm.email.$touched">
+          Must be a valid email address: handle@domain format
+        </span>
+        {{ signup.user.email }}
+        <br>
+  
+      <input type="text" name="phone" placeholder="Phone ###-###-####"
+        ng-model="signup.user.phone"
+        pattern="(\d{10})"
+        required>
+        <span ng-if="signupForm.phone.$invalid && signupForm.phone.$touched">
+          Phone must be in the format ###-###-#### without the dash.
+        </span>
+        {{ signup.user.phone }}
+        <br>
+  
+        <input name="faveDish" placeholder="Favorite Dish"
+        ng-model="signup.user.faveDish"
+        required
+        sign-up-directive
+        ng-class="(signup.faveDishNotValid == false && signupForm.faveDish.$touched) ? 'enabled' : 'disabled'">
+        <span ng-if="signup.faveDishNotValid == false">
+          {{signup.faveDishName}}
+        </span>
+        <span ng-if="(signup.faveDishNotValid || signupForm.faveDish.$invalid) && signupForm.faveDish.$touched">
+          No such menu item exists (Needs to be an uppercase letter(s) category short name follow up with the menu number)
+        </span>
+        <br>
 
-<fieldset>
-  <legend id="signuplegend">Registration</legend>
-  <form name='signupForm' novalidate>
+      <button
+        ng-disabled="signupForm.$invalid || signup.faveDishNotValid"
+        ng-click="signup.submit()">
+        Submit
+      </button>
+  
+    </form>
+  </fieldset>
+  
+  <div id="info" ng-if="signup.completed">
+    Your information has been saved <br>
+    First name: {{ signup.user.firstName}} <br>
+    Last name: {{ signup.user.lastName}} <br>
+    Email: {{ signup.user.email}} <br>
+    Phone: {{ signup.user.phone }} <br>
+    Favorite Dish: ({{signup.user.faveDish}}) - {{signup.faveDishName}}
+  </div>
 
-    <input type="text" name="firstName" placeholder="Enter a first name"
-      ng-model="signup.user.firstName"
-      required
-      minlength="1"
-      ng-maxlength="20"
-      id="inputFirstName">
-      {{ signup.user.firstName }}
-      <span
-        ng-if="(signupForm.firstName.$error.minlength || signupForm.firstName.$error.required) && signupForm.firstName.$touched">
-        First name must be at least 1 character long
-      </span>
-      <span ng-if="signupForm.firstName.$error.maxlength && signupForm.firstName.$touched">
-        First name must not be longer than 20 characters
-      </span>
-      <br>
-
-    <input type="text" name="lastName" placeholder="Enter a last name"
-      ng-model="signup.user.lastName"
-      required
-      minlength="1"
-      ng-maxlength="20"
-      >
-      {{ signup.user.lastName }}
-      <span
-        ng-if="(signupForm.lastName.$error.minlength || signupForm.lastName.$error.required) && signupForm.lastName.$touched">
-        Last name must be at least 1 character long
-      </span>
-      <span ng-if="signupForm.lastName.$error.maxlength && signupForm.lastName.$touched">
-        Last name must not be longer than 20 characters
-      </span>
-      <br>
-
-    <input type="email" name="email" placeholder="Email"
-      ng-model="signup.user.email"
-      required>
-      <span ng-if="signupForm.email.$invalid && signupForm.email.$touched">
-        Must be a valid email address: handle@domain format
-      </span>
-      {{ signup.user.email }}
-      <br>
-
-    <input type="text" name="phone" placeholder="Phone ###-###-####"
-      ng-model="signup.user.phone"
-      pattern="(\d{10})"
-      required>
-      <span ng-if="signupForm.phone.$invalid && signupForm.phone.$touched">
-        Phone must be in the format ###-###-#### without the dash.
-      </span>
-      {{ signup.user.phone }}
-      <br>
-
-      <input type="text" name="faveDish" placeholder="Favorite Dish"
-      ng-model="signup.user.faveDish"
-      required
-      sign-up-directive>
-      <span ng-if="signupForm.faveDish.$invalid && signupForm.faveDish.$touched">
-        Favorite Dish must be a valid menu item number.
-      </span>
-      <br>
-
-      
-
-    <button
-      ng-disabled="signupForm.$invalid"
-      ng-click="signup.submit()">Submit</button>
-
-      <div style="margin-top: 10px;">
-        Form valid? {{ signupForm.$valid }}
-      </div>
-  </form>
-</fieldset>
-
-<div id="info" ng-if="signup.completed">
-  Username: {{ signup.user.firstName}} <br>
-  Username: {{ signup.user.lastName}} <br>
-  Email: {{ signup.user.email}} <br>
-  Phone: {{ signup.user.phone }}
 </div>

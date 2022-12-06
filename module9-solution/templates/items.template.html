@@ -13,14 +13,14 @@
 </div>
 <ol> 
     <li ng-repeat="item in items.itemList">
-      <section class="categoryid">
-        ID: {{item.id}}
-      </section>
       <section class="categoryName">
         Name: {{ item.name }}
       </section>
       <section class="categoryShortName">
         Short Name: {{ item.short_name }} 
+      </section>
+      <section class="categoryid">
+        Description: {{item.description}}
       </section>
     </li>
 </ol>

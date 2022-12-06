@@ -9,7 +9,6 @@ MenuService.$inject = ['$http', 'ApiPath'];
 function MenuService($http, ApiPath) {
   var service = this;
 
-  // service.user = [];
   service.getCategories = function () {
     return $http.get(ApiPath + '/categories.json').then(function (response) {
       return response.data;
@@ -28,12 +27,13 @@ function MenuService($http, ApiPath) {
     });
   };
 
-  service.getFaveMenuItem = function (shortName) {
-    return $http.get(ApiPath + '/menu_items/' + shortName + ".json").then(function (response) {
+  service.getFaveMenuItem = function (category_short_name, menu_number) {
+    return $http.get(ApiPath + '/menu_items/' + category_short_name + '/menu_items/' + menu_number +".json").then(function (response) {
       console.log(response.data);
       return response.data;
     });
   };
+  // https://coursera-jhu-default-rtdb.firebaseio.com/menu_items/{category_short_name}/menu_items/{menu_number}.json
 
   // service.addUser = function(signedUpUser){
   //   service.user.push(signedUpUser);

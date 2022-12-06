@@ -1,0 +1,23 @@
+<div class="container">
+  <h1 class="text-center">USER INFO</h1>
+  <div class="text-center">
+    <span class="text-center" ng-if="myinfo.user.length === 0">
+      Not Signed Up Yet.
+      <a ui-sref="public.signup" ui-sref-active="activeTab">Sign up Now!</a>
+    </span>
+  </div>
+  <span ng-if="myinfo.user.length !== 0">
+    First Name: {{myinfo.firstName}} <br />
+    Last Name: {{myinfo.lastName}} <br />
+    Email: {{myinfo.email}} <br />
+    Phone: {{myinfo.phone}} <br />
+    Favorite Dish: ({{myinfo.faveDish}}) - {{myinfo.faveDishName}} <br />
+    <img
+      width="200"
+      height="200"
+      ng-src="images/menu/{{myinfo.faveDishCategory}}/{{myinfo.faveDishCategory}}.jpg"
+      alt="{{myinfo.faveDishCategory}}"
+    /><br />
+    Description: {{myinfo.faveDishDescription}}
+  </span>
+</div>

@@ -10,8 +10,11 @@ function UserService() {
   service.user = [];
 
   service.addUser = function(signedUpUser){
-    
     service.user.push(signedUpUser);
+  }
+
+  service.getUser = function() {
+    return service.user;
   }
 
 }
