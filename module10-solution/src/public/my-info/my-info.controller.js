@@ -8,7 +8,6 @@ MyInfoController.$inject = ['UserService', 'ApiPath'];
 function MyInfoController(UserService, ApiPath) {
     var myinfo = this;
     myinfo.user = UserService.getUser();
-    console.log(myinfo.user.length);
     myinfo.basePath = ApiPath;
     if(myinfo.user.length != 0){
         myinfo.firstName = myinfo.user[myinfo.user.length-1].firstName;

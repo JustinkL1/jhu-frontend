@@ -15,7 +15,6 @@ function MenuService($http, ApiPath) {
     });
   };
 
-
   service.getMenuItems = function (category) {
     var config = {};
     if (category) {
@@ -29,15 +28,9 @@ function MenuService($http, ApiPath) {
 
   service.getFaveMenuItem = function (category_short_name, menu_number) {
     return $http.get(ApiPath + '/menu_items/' + category_short_name + '/menu_items/' + menu_number +".json").then(function (response) {
-      console.log(response.data);
       return response.data;
     });
   };
-  // https://coursera-jhu-default-rtdb.firebaseio.com/menu_items/{category_short_name}/menu_items/{menu_number}.json
-
-  // service.addUser = function(signedUpUser){
-  //   service.user.push(signedUpUser);
-  // }
 
 }
 
