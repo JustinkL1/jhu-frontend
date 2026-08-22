@@ -15,11 +15,11 @@ $(function () {
 
   var homeHtmlUrl = "snippets/home-snippet.html";
   var allCategoriesUrl =
-    "https://davids-restaurant.herokuapp.com/categories.json";
+    "https://coursera-jhu-default-rtdb.firebaseio.com/categories.json";
   var categoriesTitleHtml = "snippets/categories-title-snippet.html";
   var categoryHtml = "snippets/category-snippet.html";
   var menuItemsUrl =
-    "https://davids-restaurant.herokuapp.com/menu_items.json?category=";
+    "https://coursera-jhu-default-rtdb.firebaseio.com/menu_items/";
   var menuItemsTitleHtml = "snippets/menu-items-title.html";
   var menuItemHtml = "snippets/menu-item.html";
 
@@ -87,7 +87,7 @@ $(function () {
     $ajaxUtils.sendGetRequest(
       allCategoriesUrl,
       buildAndShowHomeHTML, // ***** <---- TODO: STEP 1: Substitute [...] ******
-      true
+      true,
     ); // Explicitly setting the flag to get JSON from server processed into an object literal
   });
   // *** finish **
@@ -103,7 +103,8 @@ $(function () {
         // Pay attention to what type of data that function returns vs what the chosenCategoryShortName
         // variable's name implies it expects.
         // var chosenCategoryShortName = ....
-        var chosenCategoryShortName = chooseRandomCategory(categories).short_name;
+        var chosenCategoryShortName =
+          chooseRandomCategory(categories).short_name;
 
         // TODO: STEP 3: Substitute {{randomCategoryShortName}} in the home html snippet with the
         // chosen category from STEP 2. Use existing insertProperty function for that purpose.
@@ -120,7 +121,7 @@ $(function () {
         var homeHtmlToInsertIntoMainPage = insertProperty(
           homeHtml,
           "randomCategoryShortName",
-          "'" + chosenCategoryShortName + "'"
+          "'" + chosenCategoryShortName + "'",
         );
 
         // TODO: STEP 4: Insert the produced HTML in STEP 3 into the main page
@@ -129,7 +130,7 @@ $(function () {
         // ....
         insertHtml("#main-content", homeHtmlToInsertIntoMainPage);
       },
-      false
+      false,
     ); // False here because we are getting just regular HTML from the server, so no need to process JSON.
   }
 
@@ -153,8 +154,8 @@ $(function () {
   dc.loadMenuItems = function (categoryShort) {
     showLoading("#main-content");
     $ajaxUtils.sendGetRequest(
-      menuItemsUrl + categoryShort,
-      buildAndShowMenuItemsHTML
+      menuItemsUrl + categoryShort + ".json",
+      buildAndShowMenuItemsHTML,
     );
   };
 
@@ -175,14 +176,14 @@ $(function () {
             var categoriesViewHtml = buildCategoriesViewHtml(
               categories,
               categoriesTitleHtml,
-              categoryHtml
+              categoryHtml,
             );
             insertHtml("#main-content", categoriesViewHtml);
           },
-          false
+          false,
         );
       },
-      false
+      false,
     );
   }
 
@@ -191,7 +192,7 @@ $(function () {
   function buildCategoriesViewHtml(
     categories,
     categoriesTitleHtml,
-    categoryHtml
+    categoryHtml,
   ) {
     var finalHtml = categoriesTitleHtml;
     finalHtml += "<section class='row'>";
@@ -228,14 +229,14 @@ $(function () {
             var menuItemsViewHtml = buildMenuItemsViewHtml(
               categoryMenuItems,
               menuItemsTitleHtml,
-              menuItemHtml
+              menuItemHtml,
             );
             insertHtml("#main-content", menuItemsViewHtml);
           },
-          false
+          false,
         );
       },
-      false
+      false,
     );
   }
 
@@ -244,17 +245,17 @@ $(function () {
   function buildMenuItemsViewHtml(
     categoryMenuItems,
     menuItemsTitleHtml,
-    menuItemHtml
+    menuItemHtml,
   ) {
     menuItemsTitleHtml = insertProperty(
       menuItemsTitleHtml,
       "name",
-      categoryMenuItems.category.name
+      categoryMenuItems.category.name,
     );
     menuItemsTitleHtml = insertProperty(
       menuItemsTitleHtml,
       "special_instructions",
-      categoryMenuItems.category.special_instructions
+      categoryMenuItems.category.special_instructions,
     );
 
     var finalHtml = menuItemsTitleHtml;
@@ -272,13 +273,13 @@ $(function () {
       html = insertItemPortionName(
         html,
         "small_portion_name",
-        menuItems[i].small_portion_name
+        menuItems[i].small_portion_name,
       );
       html = insertItemPrice(html, "price_large", menuItems[i].price_large);
       html = insertItemPortionName(
         html,
         "large_portion_name",
-        menuItems[i].large_portion_name
+        menuItems[i].large_portion_name,
       );
       html = insertProperty(html, "name", menuItems[i].name);
       html = insertProperty(html, "description", menuItems[i].description);
@@ -323,8 +324,8 @@ $(function () {
   // Module 5 Requirement 2-3
   // -------------------------------------------------
   var aboutRatingHtml = "snippets/about.html";
-  var stillInAboutPage = -1;                    // Check if the user is still in about page
-  var starRating = 0;                           // Star rating of the restaurant
+  var stillInAboutPage = -1; // Check if the user is still in about page
+  var starRating = 0; // Star rating of the restaurant
 
   // Only switch stillInAboutPage variable until home button is active
   var checkHomeIsActive = function () {
@@ -332,7 +333,7 @@ $(function () {
     if (classes.indexOf("active") !== -1) {
       stillInAboutPage = -1;
     }
-  }
+  };
 
   // Remove the class 'active' from home and switch to About button
   var switchAboutToActive = function () {
@@ -371,14 +372,14 @@ $(function () {
         //Check if the user came from the home view first
         checkHomeIsActive();
         // Switch CSS class active to about button
-          switchAboutToActive();
-        if(stillInAboutPage === -1 || starRating === 0){
+        switchAboutToActive();
+        if (stillInAboutPage === -1 || starRating === 0) {
           starRating = randomStarRating();
           console.log("New star has been generated: " + starRating);
-        } 
+        }
 
-        var filledStar = 'fa fa-star';
-        var emptyStar = 'fa fa-star-o';
+        var filledStar = "fa fa-star";
+        var emptyStar = "fa fa-star-o";
 
         // Loop over star spans
         for (var i = 1; i <= 5; i++) {
@@ -389,12 +390,12 @@ $(function () {
           } else {
             html = insertProperty(html, starClass, emptyStar);
           }
-        }  
+        }
 
         var ratingViewHtml = insertProperty(html, "starRating", starRating);
         insertHtml("#main-content", ratingViewHtml);
       },
-      false
+      false,
     );
   }
 
